@@ -1,45 +1,20 @@
-package starter.Reqres;
+package starter.Reqres.StepDef;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
+import starter.Reqres.ReqresAPI;
 
 import java.io.File;
 
 import static org.hamcrest.Matchers.equalTo;
 
-public class ReqresStepDef
+public class CreateUserStepDef
 {
     @Steps
     ReqresAPI reqresAPI;
-
-    //Scenario 1
-    @Given("Get list user with page {int}")
-    public void getListUserWithPage(int page)
-    {
-        reqresAPI.setGetListUser(page);
-    }
-
-    @When("Send request get list user")
-    public void sendRequestGetListUser()
-    {
-        SerenityRest.when().get(ReqresAPI.GET_LIST_USER);
-    }
-
-    @Then("Should return status code {int}")
-    public void shouldReturnStatusCode(int ok)
-    {
-        SerenityRest.then().statusCode(ok);
-    }
-
-    @And("Response body page should be {int}")
-    public void responseBodyShouldPagePage(int page)
-    {
-        SerenityRest.then().body("page", equalTo(page));
-    }
 
     // Scenario 2
     @Given("Post create user with valid json")
@@ -61,5 +36,30 @@ public class ReqresStepDef
         SerenityRest.then()
                 .body("name",equalTo(name))
                 .body("job",equalTo(job));
+    }
+
+    //Tugas scenario 1
+    @Given("Post create user with blank name and job")
+    public void postCreateUserWithBlankJson()
+    {
+        File json = new File(ReqresAPI.JSON_REQUEST+"/CreateUserBlank.json");
+        reqresAPI.setPostCreateUser(json);
+    }
+
+    //Tugas scenario 2
+    @Given("Post create user with category name, job and age")
+    public void postCreateUserWithExtraJson()
+    {
+        File json = new File(ReqresAPI.JSON_REQUEST+"/ExtraCategory.json");
+        reqresAPI.setPostCreateUser(json);
+    }
+
+    @And("Response body name should be {string}, job {string} and age {string}")
+    public void responseBodyNameJobAndAge(String name, String job, String age)
+    {
+        SerenityRest.then()
+                .body("name",equalTo(name))
+                .body("job",equalTo(job))
+                .body("age",equalTo(age));
     }
 }
