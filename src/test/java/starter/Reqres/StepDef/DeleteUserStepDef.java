@@ -25,9 +25,9 @@ public class DeleteUserStepDef
     }
 
     //Tugas scenario 1
-    @Given("Delete user with invalid id input {int}")
-    public void deleteUserWithInvalidId(int id)
+    @Given("Delete user with invalid id input {string}")
+    public void deleteUserWithInvalidId(String id)
     {
-        reqresAPI.deleteUser(id);
+        reqresAPI.deleteInvalidUser(id);
     }
 }
