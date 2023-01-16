@@ -12,7 +12,7 @@ Feature: Testing List Users Reqres API
 #      |1   |
 #      |2   |
 
-  @Tugas-List-User-Positive-Case
+  @Tugas @Positive-Case
   Scenario Outline: GET list user with modified parameter should succes then return 200 response code
     Given Get list user with total user per page <perPage> and total page <totalPage>
     When Send request get list user with modified parameter
@@ -23,7 +23,7 @@ Feature: Testing List Users Reqres API
       | perPage | totalPage | page |
       | 12      | 1         | 1    |
 
-  @Tugas-List-User-Negative-Case
+  @Tugas @Negative-Case
   Scenario Outline: Get list users with invalid parameter page reqres API
     Given Get list user with page "<page>"
     When Send request get list user

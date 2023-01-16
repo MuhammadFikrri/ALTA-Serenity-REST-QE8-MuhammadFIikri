@@ -11,7 +11,7 @@ Feature: Testing Create user Reqres API
 #      | name                   | job         |
 #      | Muhammad Fikri Rabbani | QA Engineer |
 
-  @Tugas-Create-User-Negative-Case
+  @Tugas @Negative-Case
   Scenario Outline: POST new user with blank username body and password body should failed then return 400
     Given Post create user with blank name and job
     When Send request post create user
@@ -22,7 +22,7 @@ Feature: Testing Create user Reqres API
       | name | job |
       |      |     |
 
-  @Tugas-Create-User-Negative-Case
+  @Tugas @Negative-Case
   Scenario Outline: POST new user with extra category should failed then return 400
     Given Post create user with category name, job and age
     When Send request post create user

@@ -6,7 +6,7 @@ Feature: Testing Update user Reqres API
 #    Then Should return status code 200
 #    And Response body name should be "Muhammad Fikri Rabbani" and job "QA Engineer"
 
-  @Tugas-Update-User-Negative-Case
+  @Tugas @Negative-Case
   Scenario: PUT update user with extra category should failed then return 400
     Given Put update user with category name, job and age with id 2
     When Send request put update user
@@ -17,7 +17,7 @@ Feature: Testing Update user Reqres API
       | name                   | job         | age |
       | Muhammad Fikri Rabbani | QA Engineer | 22  |
 
-  @Tugas-Update-User-Negative-Case
+  @Tugas @Negative-Case
   Scenario: PUT update user with blank username body and password should failed then return 400
     Given Put update user with blank name and job with id 2
     When Send request put update user

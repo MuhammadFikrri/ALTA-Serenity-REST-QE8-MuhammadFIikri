@@ -10,7 +10,7 @@ Feature: Testing Delete user Reqres API
 #      | 1  |
 #      | 2  |
 
-  @Tugas-Delete-Negative-Case
+  @Tugas @Negative-Case
   Scenario Outline: DELETE user with invalid parameter should failed then return 404 response code
     Given Delete user with invalid id input "<id>"
     When Send request delete user
